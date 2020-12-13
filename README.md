@@ -44,7 +44,7 @@ ORDER BY top10skus.sprice_stdev DESC;
 
 
 
-Topic: Department with largest decrease in average daily sales volume between august to september grouped by store, city, and state.
+Topic: Department with largest decrease in average daily sales volume between November to December grouped by store, city, and state.
 
 
 Database ua_dillards;
