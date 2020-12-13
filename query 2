@@ -1,0 +1,29 @@
+Topic: Department with largest decrease in average daily sales volume between august to september grouped by store, city, and state.
+Database ua_dillards;
+SELECT d.deptdesc, m.store, m.city, m.state,
+
+SUM(CASE extract(month from t.saledate) WHEN 11 THEN t.amt END) AS novsales,
+SUM(CASE extract(month from t.saledate) WHEN 12 THEN t.amt END) AS decsales,
+
+(SUM (CASE extract(month from t.saledate) WHEN 11 THEN t.amt END)/(Count(distinct t.saledate)) AS novdailysales,
+
+(SUM(CASE WHEN EXTRACT (month from t.saledate)=12 THEN t.amt END)/Count(distinct t.saledate)) AS decdailysales,
+
+((dsalesavg-nsalesavg)/(nsalesavg)) AS dailysalesdiffpercent
+
+FROM trnsact t
+
+JOIN store_msa m ON t.store=m.store 
+JOIN skuinfo s ON t.sku=s.sku
+JOIN deptinfo d ON s.dept=d.dept
+
+WHERE t.stype='P'
+Having novsales>1000 
+AND decsales>1000 
+AND salesdiffpercent>0 
+AND COUNT(DISTINCT t.saledate)>20)
+
+
+GROUP BY d.deptdesc, m.store, m.city, m.state
+
+ORDER BY dailysalesdiffpercent DESC
