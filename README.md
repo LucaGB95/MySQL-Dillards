@@ -1,5 +1,5 @@
 # MySQL-Dillards
-Retail Data Set Queries
+Retail Data Set Queries  Topic: Greatest decrease in items sold between Aug-Sept by department/city/state.
 
 Database ua_dillards;
 
