@@ -12,8 +12,6 @@ Count(CASE extract(month from t.saledate) WHEN 9 THEN t.saledate END) AS Septnum
 
 FROM trnsact t
 
-
-
 JOIN store_msa m ON t.store=m.store 
 JOIN skuinfo s ON t.sku=s.sku
 JOIN deptinfo d ON s.dept=d.dept
