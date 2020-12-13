@@ -32,7 +32,11 @@ WHERE stype='P'
 GROUP BY sku
 HAVING num_transactions>100
 ORDER BY sprice_stdev DESC) AS top10skus
+
 JOIN skuinfo s
 ON top10skus.sku=s.sku
+
 ORDER BY top10skus.sprice_stdev DESC;
+
+
 
